@@ -1,40 +1,21 @@
-var name = "Cesar Carrillo",
-	role = "Web Developer";
-
-var formattedName = HTMLheaderName.replace("%data%", name),
-	formattedRole = HTMLheaderRole.replace("%data%", role);
-
-$("#header").prepend(formattedName, formattedRole);
-
-var skills = ["auto-didactic", "programming"];
+var skills = ["HTML", "CSS", "JavaScript", "JQuery", "Responsive Web Design", "Git"];
 
 var bio = {
 	"name": "Cesar Carrillo",
 	"age": 24,
-	"role": "Front End Developer",
+	"role": "Web Developer",
 	"contacts": {
 		"mobile": "+521 833 3 09 22 04",
 		"email": "sistemas.carrillo01@gmail.com",
-		"github": "carrillo455",
 		"twitter": "@carrillop91",
+		"github": "carrillo455",
+		"blog": "",
 		"location": "Ciudad Madero, Tamaulipas, Mexico"
 	},
-	"bioPic": "images/me.jpg",
-	"welcomeMessage": "Welcome to my Resume",
+	"bioPic": "images/fry.jpg",
+	"welcomeMessage": "Hello! Welcome to my second project at Udacity's Academy. This is my Resume :-)",
 	"skills": skills
 };
-
-// var work = {};
-// work.position = "Junior Full Stack Developer";
-// work.employer = "Altamira's Government",
-// work.years = 2;
-// work.city = "Altamira";
-// work.state = "Tamaulipas";
-
-// var education = {};
-// education["school"] = "IEST";
-// education["years"] = 4.5;
-// education["city"] = "Altamira";
 
 var education = {
 	"schools": [
@@ -62,17 +43,19 @@ var education = {
 			"url": "udacity.com"
 		}
 	]
-}
+};
 
 var work = {
 	"jobs": [
-		"employer": "Government",
-		"title": "Junior Full Stack Web Developer",
-		"location": "Altamira, Tamaulipas, MX",
-		"dates": 2013,
-		"description": "From the analisis, dealing with customer and develop application with front end and back end knowledge."
+		{
+			"employer": "Government",
+			"title": "Junior Full Stack Web Developer",
+			"location": "Altamira, Tamaulipas, MX",
+			"dates": 2013,
+			"description": "From the analisis, dealing with customer and develop application with front end and back end knowledge."
+		}
 	]
-}
+};
 
 var projects = {
 	"projects": [
@@ -85,7 +68,41 @@ var projects = {
 			]
 		}
 	]
+};
+
+// Top Header => Name + Role + Pic
+var formattedName = HTMLheaderName.replace("%data%", bio.name),
+	formattedRole = HTMLheaderRole.replace("%data%", bio.role),
+	formattedBioPic = HTMLbioPic.replace("%data%", bio.bioPic);
+
+$("#header").prepend(formattedName, formattedRole, formattedBioPic);
+
+// Mid Header => Contacts
+var //formattedContactGeneric = HTMLcontactGeneric.replace("%data%", bio.);
+	formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile),
+	formattedEmail = HTMLemail.replace("%data%", bio.contacts.email),
+	formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter),
+	formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github),
+	formattedBlog = HTMLblog.replace("%data%", bio.contacts.blog),
+	formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+
+$("#topContacts").prepend(formattedMobile, formattedEmail, formattedTwitter, formattedGithub, formattedLocation);
+
+//Mid Header => Skills
+$("#header").append(HTMLskillsStart);
+
+var formattedSkill;
+for (var i = 0; i < bio.skills.length; i++) {
+	formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
+	$("#skills").append(formattedSkill);
 }
+
+// Bottom Header => Welcome Message
+var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+
+$("#header").append(formattedWelcomeMsg);
+
+
 
 var charEscape = function(_html) {
 	var newHTML = _html;
